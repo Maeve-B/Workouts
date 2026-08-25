@@ -1,0 +1,1058 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Circuit Form Guide</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Anton&family=Oswald:wght@400;500;600&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --ink:#f4f1ea;
+    --bg:#141414;
+    --panel:#1c1c1c;
+    --line:#333;
+    --warmup:#e0e0e0;
+    --legs:#ff6b6b;
+    --chest:#e8481c;
+    --back:#5fd6c4;
+    --triceps:#f2c14e;
+    --biceps:#4ea8de;
+    --shoulders:#8ac926;
+    --core:#c77dff;
+  }
+  *{box-sizing:border-box; margin:0; padding:0;}
+  body{
+    background:var(--bg);
+    color:var(--ink);
+    font-family:'Inter',sans-serif;
+    padding-bottom:60px;
+  }
+  header{
+    padding:36px 20px 22px;
+    border-bottom:2px solid var(--line);
+    position:sticky;
+    top:0;
+    background:var(--bg);
+    z-index:5;
+  }
+  header .eyebrow{
+    font-family:'Oswald',sans-serif;
+    font-size:12px;
+    letter-spacing:0.3em;
+    text-transform:uppercase;
+    color:#9a9a9a;
+  }
+  h1{
+    font-family:'Anton',sans-serif;
+    font-size:clamp(30px,8vw,44px);
+    line-height:0.95;
+    margin-top:6px;
+    text-transform:uppercase;
+  }
+  nav{
+    display:flex;
+    flex-wrap:wrap;
+    gap:8px;
+    margin-top:16px;
+  }
+  nav a{
+    font-family:'Oswald',sans-serif;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:0.05em;
+    color:var(--ink);
+    text-decoration:none;
+    border:1px solid var(--line);
+    padding:6px 12px;
+    border-radius:20px;
+  }
+
+  .track{
+    padding:30px 20px 10px;
+    border-bottom:2px solid var(--line);
+  }
+  .track-head{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    margin-bottom:20px;
+  }
+  .track-num{
+    font-family:'Anton',sans-serif;
+    font-size:14px;
+    color:var(--accent);
+    border:2px solid var(--accent);
+    border-radius:50%;
+    width:32px;
+    height:32px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .track-head h2{
+    font-family:'Oswald',sans-serif;
+    font-size:24px;
+    text-transform:uppercase;
+    letter-spacing:0.03em;
+  }
+  .track-head .equip{
+    font-size:11px;
+    color:#9a9a9a;
+    margin-left:auto;
+    text-transform:uppercase;
+    letter-spacing:0.07em;
+  }
+
+  .ex{
+    background:var(--panel);
+    border:1px solid var(--line);
+    border-left:4px solid var(--accent);
+    border-radius:6px;
+    padding:18px 18px 20px;
+    margin-bottom:18px;
+  }
+  .ex-title-row{
+    display:flex;
+    justify-content:space-between;
+    align-items:baseline;
+    margin-bottom:14px;
+    flex-wrap:wrap;
+    gap:6px;
+  }
+  .ex-title{
+    font-family:'Oswald',sans-serif;
+    font-size:19px;
+    text-transform:uppercase;
+    letter-spacing:0.01em;
+  }
+  .ex-reps{
+    font-family:'Anton',sans-serif;
+    font-size:16px;
+    color:var(--accent);
+  }
+  .ex-reps span{
+    font-family:'Inter',sans-serif;
+    font-size:10px;
+    color:#9a9a9a;
+    text-transform:uppercase;
+    margin-left:3px;
+  }
+
+  .frames{
+    display:flex;
+    gap:10px;
+    margin-bottom:14px;
+  }
+  .frame{
+    flex:1;
+    background:#111;
+    border-radius:5px;
+    padding:8px 6px 6px;
+    text-align:center;
+  }
+  .frame svg{
+    width:100%;
+    max-width:120px;
+    height:auto;
+  }
+  .frame .label{
+    font-family:'Oswald',sans-serif;
+    font-size:10px;
+    letter-spacing:0.1em;
+    text-transform:uppercase;
+    color:#8a8a8a;
+    margin-top:4px;
+  }
+
+  .steps{
+    list-style:none;
+    counter-reset:step;
+    margin-bottom:10px;
+  }
+  .steps li{
+    counter-increment:step;
+    position:relative;
+    padding-left:26px;
+    margin-bottom:7px;
+    font-size:14px;
+    line-height:1.5;
+    color:#e5e2da;
+  }
+  .steps li::before{
+    content:counter(step);
+    position:absolute;
+    left:0;
+    top:0;
+    font-family:'Oswald',sans-serif;
+    font-size:11px;
+    font-weight:600;
+    color:var(--accent);
+    background:rgba(255,255,255,0.06);
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+  }
+
+  .cue{
+    font-size:12.5px;
+    color:#b0b0b0;
+    border-top:1px dashed var(--line);
+    padding-top:9px;
+    margin-top:8px;
+  }
+  .cue b{ color:var(--accent); font-weight:600; }
+
+  .simple-list{
+    list-style:none;
+  }
+  .simple-item{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    padding:12px 4px;
+    border-bottom:1px solid var(--line);
+    font-size:15px;
+  }
+  .simple-item:last-child{
+    border-bottom:none;
+  }
+  .simple-item .sname{
+    font-family:'Oswald',sans-serif;
+    text-transform:uppercase;
+    letter-spacing:0.02em;
+    font-size:14.5px;
+  }
+  .simple-item .sreps{
+    font-family:'Anton',sans-serif;
+    font-size:16px;
+    color:var(--accent);
+    white-space:nowrap;
+    margin-left:12px;
+  }
+  .simple-item .sreps span{
+    font-family:'Inter',sans-serif;
+    font-size:10px;
+    color:#9a9a9a;
+    text-transform:uppercase;
+    margin-left:3px;
+  }
+  .track-note{
+    font-size:13px;
+    color:#9a9a9a;
+    margin-bottom:14px;
+    line-height:1.5;
+  }
+  .weight{
+    font-size:12px;
+    color:#c9c6bc;
+    background:rgba(255,255,255,0.06);
+    display:inline-block;
+    padding:3px 9px;
+    border-radius:4px;
+    margin-bottom:12px;
+    font-family:'Oswald',sans-serif;
+    letter-spacing:0.02em;
+  }
+  .weight b{ color:var(--accent); font-weight:600; }
+  .sweight{
+    font-size:11px;
+    color:#8a8a8a;
+    margin-left:8px;
+    white-space:nowrap;
+  }
+
+  #warmup{--accent:var(--warmup);}
+  #legs{--accent:var(--legs);}
+  #chest{--accent:var(--chest);}
+  #back{--accent:var(--back);}
+  #triceps{--accent:var(--triceps);}
+  #biceps{--accent:var(--biceps);}
+  #shoulders{--accent:var(--shoulders);}
+  #core{--accent:var(--core);}
+
+  footer{
+    padding:26px 20px 0;
+    color:#7a7a7a;
+    font-size:12px;
+    line-height:1.6;
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="eyebrow">Circuit Reference — Full Program</div>
+  <h1>Full Circuit<br>+ Form Guide</h1>
+  <p style="margin-top:10px; color:#9a9a9a; font-size:12.5px; line-height:1.5; max-width:38em;">Weights are starting points, not fixed targets. Squat and overhead press are scaled from your 5x5 numbers; everything else is a general estimate — adjust up or down after your first set based on how the last 2–3 reps feel.</p>
+  <nav>
+    <a href="#warmup">Warm-Up</a>
+    <a href="#legs">Legs</a>
+    <a href="#chest">Chest</a>
+    <a href="#back">Back</a>
+    <a href="#triceps">Triceps</a>
+    <a href="#biceps">Biceps</a>
+    <a href="#shoulders">Shoulders</a>
+    <a href="#core">Core</a>
+  </nav>
+</header>
+
+<!-- WARM-UP -->
+<section class="track" id="warmup">
+  <div class="track-head">
+    <div class="track-num">1</div>
+    <h2>Warm-Up</h2>
+    <div class="equip">Light Barbell</div>
+  </div>
+  <div class="ex">
+    <div class="track-note">5–6 min. Light load, controlled bodyweight-natural pace — raising heart rate and prepping joints, not building burn yet. Run the sequence through once.</div>
+    <ul class="simple-list">
+      <li class="simple-item"><span class="sname">Squats</span><span class="sreps">16<span>reps</span> <span class="sweight">(empty bar / very light)</span></span></li>
+      <li class="simple-item"><span class="sname">Squat + Upright Row</span><span class="sreps">16<span>reps</span> <span class="sweight">(empty bar / very light)</span></span></li>
+      <li class="simple-item"><span class="sname">Bicep Curls</span><span class="sreps">16<span>reps</span> <span class="sweight">(empty bar / very light)</span></span></li>
+      <li class="simple-item"><span class="sname">Overhead Press</span><span class="sreps">16<span>reps</span> <span class="sweight">(empty bar / very light)</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- LEGS -->
+<section class="track" id="legs">
+  <div class="track-head">
+    <div class="track-num">2</div>
+    <h2>Legs</h2>
+    <div class="equip">Barbell</div>
+  </div>
+  <div class="ex">
+    <div class="track-note">6–8 min. Moderate load, back or front rack.</div>
+    <ul class="simple-list">
+      <li class="simple-item"><span class="sname">Squats</span><span class="sreps">20<span>reps</span> <span class="sweight">25–28kg</span></span></li>
+      <li class="simple-item"><span class="sname">Squat Pulse (bottom 1/4 range)</span><span class="sreps">16<span>reps</span> <span class="sweight">20–25kg</span></span></li>
+      <li class="simple-item"><span class="sname">Lunges (alternating)</span><span class="sreps">20<span>reps total</span> <span class="sweight">6–8kg each DB</span></span></li>
+      <li class="simple-item"><span class="sname">Sumo Squats</span><span class="sreps">16<span>reps</span> <span class="sweight">20–25kg</span></span></li>
+      <li class="simple-item"><span class="sname">Squat + Calf Raise</span><span class="sreps">16<span>reps</span> <span class="sweight">20–25kg</span></span></li>
+      <li class="simple-item"><span class="sname">Finisher: Bodyweight Squat Pulses</span><span class="sreps">30<span>sec</span> <span class="sweight">bodyweight</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- CHEST -->
+<section class="track" id="chest">
+  <div class="track-head">
+    <div class="track-num">3</div>
+    <h2>Chest</h2>
+    <div class="equip">Bench + Dumbbells</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Flat Bench Press</div>
+      <div class="ex-reps">20<span>reps</span></div>
+    </div>
+    <div class="weight"><b>10–12kg</b> each dumbbell (estimate — adjust after set 1)</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <rect x="15" y="72" width="90" height="8" rx="3" fill="var(--accent)" fill-opacity="0.15"/>
+          <ellipse cx="60" cy="60" rx="26" ry="9" fill="#2a2a2a" stroke="#555"/>
+          <circle cx="60" cy="35" r="7"/>
+          <line x1="60" y1="42" x2="60" y2="60"/>
+          <line x1="60" y1="45" x2="35" y2="30"/>
+          <circle cx="30" cy="27" r="6"/>
+          <line x1="60" y1="45" x2="85" y2="30"/>
+          <circle cx="90" cy="27" r="6"/>
+          <line x1="60" y1="60" x2="45" y2="80"/>
+          <line x1="60" y1="60" x2="75" y2="80"/>
+        </svg>
+        <div class="label">Bottom</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <rect x="15" y="72" width="90" height="8" rx="3" fill="var(--accent)" fill-opacity="0.15"/>
+          <ellipse cx="60" cy="60" rx="26" ry="9" fill="#2a2a2a" stroke="#555"/>
+          <circle cx="60" cy="35" r="7"/>
+          <line x1="60" y1="42" x2="60" y2="60"/>
+          <line x1="60" y1="45" x2="20" y2="45"/>
+          <circle cx="14" cy="45" r="6"/>
+          <line x1="60" y1="45" x2="100" y2="45"/>
+          <circle cx="106" cy="45" r="6"/>
+          <line x1="60" y1="60" x2="45" y2="80"/>
+          <line x1="60" y1="60" x2="75" y2="80"/>
+        </svg>
+        <div class="label">Lockout</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Lie back on the bench, feet flat on the floor, dumbbells held above your chest with arms extended.</li>
+      <li>Lower the weights slowly, elbows bending out to about 45° from your body, until upper arms are roughly level with the bench.</li>
+      <li>Press back up in a straight line until arms are extended, without locking the elbows hard.</li>
+      <li>Keep shoulder blades pulled back and down into the bench throughout.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Drive through your palms, not your fingers. Exhale on the press up.</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Bench Flyes</div>
+      <div class="ex-reps">16<span>reps</span></div>
+    </div>
+    <div class="weight"><b>5–6kg</b> each dumbbell</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <rect x="15" y="72" width="90" height="8" rx="3" fill="var(--accent)" fill-opacity="0.15"/>
+          <ellipse cx="60" cy="60" rx="26" ry="9" fill="#2a2a2a" stroke="#555"/>
+          <circle cx="60" cy="35" r="7"/>
+          <line x1="60" y1="42" x2="60" y2="60"/>
+          <path d="M60 45 Q35 45 25 65"/>
+          <circle cx="20" cy="68" r="6"/>
+          <path d="M60 45 Q85 45 95 65"/>
+          <circle cx="100" cy="68" r="6"/>
+          <line x1="60" y1="60" x2="45" y2="80"/>
+          <line x1="60" y1="60" x2="75" y2="80"/>
+        </svg>
+        <div class="label">Wide (stretch)</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <rect x="15" y="72" width="90" height="8" rx="3" fill="var(--accent)" fill-opacity="0.15"/>
+          <ellipse cx="60" cy="60" rx="26" ry="9" fill="#2a2a2a" stroke="#555"/>
+          <circle cx="60" cy="35" r="7"/>
+          <line x1="60" y1="42" x2="60" y2="60"/>
+          <line x1="60" y1="45" x2="45" y2="30"/>
+          <circle cx="41" cy="27" r="6"/>
+          <line x1="60" y1="45" x2="75" y2="30"/>
+          <circle cx="79" cy="27" r="6"/>
+          <line x1="60" y1="60" x2="45" y2="80"/>
+          <line x1="60" y1="60" x2="75" y2="80"/>
+        </svg>
+        <div class="label">Top (squeeze)</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Lie on the bench holding dumbbells above your chest, palms facing each other, a soft bend in the elbows.</li>
+      <li>Lower the weights out to the sides in a wide arc, keeping the elbow bend fixed, until you feel a stretch across the chest.</li>
+      <li>Bring the dumbbells back up in the same arc, as if hugging a large barrel, squeezing the chest at the top.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Elbow angle stays constant — this is a hinge at the shoulder, not a press.</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Push-Ups</div>
+      <div class="ex-reps">15<span>reps</span></div>
+    </div>
+    <div class="weight">Bodyweight — no added load</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <line x1="10" y1="80" x2="110" y2="80"/>
+          <circle cx="18" cy="66" r="7"/>
+          <line x1="24" y1="70" x2="100" y2="76"/>
+          <line x1="35" y1="72" x2="25" y2="80"/>
+          <line x1="80" y1="75" x2="72" y2="80"/>
+        </svg>
+        <div class="label">Top</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <line x1="10" y1="80" x2="110" y2="80"/>
+          <circle cx="18" cy="70" r="7"/>
+          <line x1="24" y1="73" x2="100" y2="76"/>
+          <line x1="35" y1="60" x2="25" y2="80"/>
+          <line x1="80" y1="75" x2="72" y2="80"/>
+        </svg>
+        <div class="label">Bottom</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Hands on the bench (or floor for more challenge) slightly wider than shoulders, body in a straight line from head to heels.</li>
+      <li>Lower your chest toward your hands, elbows tracking back at roughly 45°.</li>
+      <li>Push back up to full extension without letting your hips sag or pike up.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Brace your core like someone's about to poke your stomach — keeps the line straight.</div>
+  </div>
+</section>
+
+<!-- BACK -->
+<section class="track" id="back">
+  <div class="track-head">
+    <div class="track-num">4</div>
+    <h2>Back</h2>
+    <div class="equip">Barbell + Dumbbells</div>
+  </div>
+  <div class="ex">
+    <div class="track-note">5–6 min. Hinge pattern focus.</div>
+    <ul class="simple-list">
+      <li class="simple-item"><span class="sname">Deadlifts (barbell)</span><span class="sreps">20<span>reps</span> <span class="sweight">35–40kg</span></span></li>
+      <li class="simple-item"><span class="sname">Bent-Over Rows</span><span class="sreps">20<span>reps</span> <span class="sweight">20–25kg</span></span></li>
+      <li class="simple-item"><span class="sname">Single-Arm Dumbbell Rows</span><span class="sreps">16<span>reps/side</span> <span class="sweight">8–10kg</span></span></li>
+      <li class="simple-item"><span class="sname">Good Mornings (light barbell)</span><span class="sreps">16<span>reps</span> <span class="sweight">10–15kg</span></span></li>
+      <li class="simple-item"><span class="sname">Superman Holds</span><span class="sreps">30<span>sec</span> <span class="sweight">bodyweight</span></span></li>
+    </ul>
+  </div>
+</section>
+
+<!-- TRICEPS -->
+<section class="track" id="triceps">
+  <div class="track-head">
+    <div class="track-num">5</div>
+    <h2>Triceps</h2>
+    <div class="equip">Dumbbells + Bench</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Lying Tricep Extensions</div>
+      <div class="ex-reps">16<span>reps</span></div>
+    </div>
+    <div class="weight"><b>3–4kg</b> each dumbbell</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <rect x="15" y="75" width="90" height="8" rx="3" fill="var(--accent)" fill-opacity="0.15"/>
+          <ellipse cx="60" cy="63" rx="26" ry="9" fill="#2a2a2a" stroke="#555"/>
+          <circle cx="60" cy="38" r="7"/>
+          <line x1="60" y1="45" x2="60" y2="63"/>
+          <line x1="60" y1="48" x2="42" y2="20"/>
+          <line x1="42" y1="20" x2="42" y2="10"/>
+          <circle cx="42" cy="7" r="5"/>
+          <line x1="60" y1="48" x2="78" y2="20"/>
+          <line x1="78" y1="20" x2="78" y2="10"/>
+          <circle cx="78" cy="7" r="5"/>
+          <line x1="60" y1="63" x2="45" y2="82"/>
+          <line x1="60" y1="63" x2="75" y2="82"/>
+        </svg>
+        <div class="label">Start (arms up)</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <rect x="15" y="75" width="90" height="8" rx="3" fill="var(--accent)" fill-opacity="0.15"/>
+          <ellipse cx="60" cy="63" rx="26" ry="9" fill="#2a2a2a" stroke="#555"/>
+          <circle cx="60" cy="38" r="7"/>
+          <line x1="60" y1="45" x2="60" y2="63"/>
+          <line x1="60" y1="48" x2="42" y2="20"/>
+          <line x1="42" y1="20" x2="55" y2="38"/>
+          <circle cx="58" cy="40" r="5"/>
+          <line x1="60" y1="48" x2="78" y2="20"/>
+          <line x1="78" y1="20" x2="65" y2="38"/>
+          <circle cx="62" cy="40" r="5"/>
+          <line x1="60" y1="63" x2="45" y2="82"/>
+          <line x1="60" y1="63" x2="75" y2="82"/>
+        </svg>
+        <div class="label">Bend (bar to forehead)</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Lie on the bench holding dumbbells (or a barbell) straight above your shoulders, arms extended.</li>
+      <li>Keeping your upper arms still and pointing at the ceiling, bend only at the elbow to lower the weight toward your forehead.</li>
+      <li>Extend back up by straightening the elbows, without moving the shoulder joint.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Elbows stay narrow and fixed in space — think "hinge," not "swing."</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Close-Grip Bench Press</div>
+      <div class="ex-reps">16<span>reps</span></div>
+    </div>
+    <div class="weight"><b>15–18kg</b> barbell (general estimate)</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <rect x="15" y="72" width="90" height="8" rx="3" fill="var(--accent)" fill-opacity="0.15"/>
+          <ellipse cx="60" cy="60" rx="26" ry="9" fill="#2a2a2a" stroke="#555"/>
+          <circle cx="60" cy="35" r="7"/>
+          <line x1="60" y1="42" x2="60" y2="60"/>
+          <line x1="60" y1="45" x2="45" y2="32"/>
+          <circle cx="42" cy="30" r="6"/>
+          <line x1="60" y1="45" x2="75" y2="32"/>
+          <circle cx="78" cy="30" r="6"/>
+          <line x1="30" y1="30" x2="90" y2="30"/>
+          <line x1="60" y1="60" x2="45" y2="80"/>
+          <line x1="60" y1="60" x2="75" y2="80"/>
+        </svg>
+        <div class="label">Bottom</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <rect x="15" y="72" width="90" height="8" rx="3" fill="var(--accent)" fill-opacity="0.15"/>
+          <ellipse cx="60" cy="60" rx="26" ry="9" fill="#2a2a2a" stroke="#555"/>
+          <circle cx="60" cy="35" r="7"/>
+          <line x1="60" y1="42" x2="60" y2="60"/>
+          <line x1="60" y1="45" x2="55" y2="20"/>
+          <circle cx="52" cy="17" r="6"/>
+          <line x1="60" y1="45" x2="65" y2="20"/>
+          <circle cx="68" cy="17" r="6"/>
+          <line x1="30" y1="17" x2="90" y2="17"/>
+          <line x1="60" y1="60" x2="45" y2="80"/>
+          <line x1="60" y1="60" x2="75" y2="80"/>
+        </svg>
+        <div class="label">Lockout</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Grip the barbell with hands about shoulder-width apart (narrower than a normal bench press).</li>
+      <li>Lower the bar to your lower chest, elbows tucked in close to your body rather than flared out.</li>
+      <li>Press back up, focusing on straightening the elbows through the top of the movement.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Keep elbows brushing your sides on the way down to keep tension on triceps, not shoulders.</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Tricep Kickbacks</div>
+      <div class="ex-reps">16<span>reps</span></div>
+    </div>
+    <div class="weight"><b>3–4kg</b> each dumbbell</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="30" cy="20" r="7"/>
+          <line x1="30" y1="27" x2="30" y2="65"/>
+          <line x1="30" y1="35" x2="10" y2="45"/>
+          <line x1="30" y1="35" x2="55" y2="35"/>
+          <line x1="55" y1="35" x2="55" y2="55"/>
+          <circle cx="55" cy="58" r="6"/>
+          <line x1="30" y1="65" x2="20" y2="85"/>
+          <line x1="30" y1="65" x2="40" y2="85"/>
+        </svg>
+        <div class="label">Elbow bent 90°</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="30" cy="20" r="7"/>
+          <line x1="30" y1="27" x2="30" y2="65"/>
+          <line x1="30" y1="35" x2="10" y2="45"/>
+          <line x1="30" y1="35" x2="55" y2="35"/>
+          <line x1="55" y1="35" x2="82" y2="42"/>
+          <circle cx="86" cy="44" r="6"/>
+          <line x1="30" y1="65" x2="20" y2="85"/>
+          <line x1="30" y1="65" x2="40" y2="85"/>
+        </svg>
+        <div class="label">Extended back</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Hinge forward from the hips, flat back, one hand supported on the bench, dumbbell in the other hand with elbow bent at 90° and tucked at your side.</li>
+      <li>Keeping your upper arm still, straighten the elbow to extend the dumbbell back until your arm is in line with your torso.</li>
+      <li>Pause briefly, then bend the elbow to return to the start.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Only the forearm moves. If your elbow drifts, the weight's too heavy.</div>
+  </div>
+</section>
+
+<!-- BICEPS -->
+<section class="track" id="biceps">
+  <div class="track-head">
+    <div class="track-num">6</div>
+    <h2>Biceps</h2>
+    <div class="equip">Barbell + Dumbbells</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Barbell Curl</div>
+      <div class="ex-reps">20<span>reps</span></div>
+    </div>
+    <div class="weight"><b>12–15kg</b> barbell (general estimate)</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="18" r="7"/>
+          <line x1="60" y1="25" x2="60" y2="60"/>
+          <line x1="60" y1="35" x2="35" y2="50"/>
+          <line x1="35" y1="50" x2="25" y2="65"/>
+          <line x1="15" y1="63" x2="35" y2="68"/>
+          <line x1="60" y1="35" x2="85" y2="50"/>
+          <line x1="85" y1="50" x2="95" y2="65"/>
+          <line x1="85" y1="63" x2="105" y2="68"/>
+          <line x1="60" y1="60" x2="48" y2="85"/>
+          <line x1="60" y1="60" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Arms extended</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="18" r="7"/>
+          <line x1="60" y1="25" x2="60" y2="60"/>
+          <line x1="60" y1="35" x2="35" y2="45"/>
+          <line x1="35" y1="45" x2="42" y2="25"/>
+          <line x1="32" y1="27" x2="52" y2="23"/>
+          <line x1="60" y1="35" x2="85" y2="45"/>
+          <line x1="85" y1="45" x2="78" y2="25"/>
+          <line x1="68" y1="23" x2="88" y2="27"/>
+          <line x1="60" y1="60" x2="48" y2="85"/>
+          <line x1="60" y1="60" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Curled up</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Stand tall, grip the barbell shoulder-width apart, arms extended, elbows close to your sides.</li>
+      <li>Curl the bar up toward your shoulders by bending the elbows, keeping upper arms pinned to your sides.</li>
+      <li>Squeeze at the top, then lower with control back to full extension.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> No swinging — if your hips are helping, drop the weight.</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Alternating Dumbbell Curl</div>
+      <div class="ex-reps">20<span>reps</span></div>
+    </div>
+    <div class="weight"><b>6–7kg</b> each dumbbell</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="18" r="7"/>
+          <line x1="60" y1="25" x2="60" y2="60"/>
+          <line x1="60" y1="35" x2="38" y2="48"/>
+          <line x1="38" y1="48" x2="28" y2="65"/>
+          <circle cx="24" cy="68" r="6"/>
+          <line x1="60" y1="35" x2="82" y2="45"/>
+          <line x1="82" y1="45" x2="90" y2="28"/>
+          <circle cx="93" cy="24" r="6"/>
+          <line x1="60" y1="60" x2="48" y2="85"/>
+          <line x1="60" y1="60" x2="72" y2="85"/>
+        </svg>
+        <div class="label">One arm down</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="18" r="7"/>
+          <line x1="60" y1="25" x2="60" y2="60"/>
+          <line x1="60" y1="35" x2="82" y2="48"/>
+          <line x1="82" y1="48" x2="92" y2="65"/>
+          <circle cx="96" cy="68" r="6"/>
+          <line x1="60" y1="35" x2="38" y2="45"/>
+          <line x1="38" y1="45" x2="30" y2="28"/>
+          <circle cx="27" cy="24" r="6"/>
+          <line x1="60" y1="60" x2="48" y2="85"/>
+          <line x1="60" y1="60" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Other arm up</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Stand holding a dumbbell in each hand, arms extended, palms facing forward (or neutral to start).</li>
+      <li>Curl one dumbbell up while rotating your palm to face your shoulder at the top; the other arm stays extended.</li>
+      <li>Lower that arm as you curl the opposite side, alternating each rep.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Keep the resting arm fully extended and relaxed — don't let it creep up.</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Hammer Curl</div>
+      <div class="ex-reps">16<span>reps</span></div>
+    </div>
+    <div class="weight"><b>6–7kg</b> each dumbbell</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="18" r="7"/>
+          <line x1="60" y1="25" x2="60" y2="60"/>
+          <line x1="60" y1="35" x2="35" y2="48"/>
+          <line x1="35" y1="48" x2="27" y2="65"/>
+          <rect x="20" y="65" width="14" height="7" rx="2" fill="var(--accent)" fill-opacity="0.3"/>
+          <line x1="60" y1="35" x2="85" y2="48"/>
+          <line x1="85" y1="48" x2="93" y2="65"/>
+          <rect x="86" y="65" width="14" height="7" rx="2" fill="var(--accent)" fill-opacity="0.3"/>
+          <line x1="60" y1="60" x2="48" y2="85"/>
+          <line x1="60" y1="60" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Down (thumbs up)</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="18" r="7"/>
+          <line x1="60" y1="25" x2="60" y2="60"/>
+          <line x1="60" y1="35" x2="35" y2="45"/>
+          <line x1="35" y1="45" x2="42" y2="25"/>
+          <rect x="34" y="17" width="14" height="7" rx="2" fill="var(--accent)" fill-opacity="0.3"/>
+          <line x1="60" y1="35" x2="85" y2="45"/>
+          <line x1="85" y1="45" x2="78" y2="25"/>
+          <rect x="70" y="17" width="14" height="7" rx="2" fill="var(--accent)" fill-opacity="0.3"/>
+          <line x1="60" y1="60" x2="48" y2="85"/>
+          <line x1="60" y1="60" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Curled (neutral grip)</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Hold dumbbells with palms facing each other (neutral grip), arms extended by your sides.</li>
+      <li>Curl both dumbbells up simultaneously, keeping the neutral grip throughout — thumbs stay pointing up.</li>
+      <li>Squeeze at the top, then lower under control.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> This grip biases the forearm and outer bicep — keep wrists straight, not cocked.</div>
+  </div>
+</section>
+
+<!-- SHOULDERS -->
+<section class="track" id="shoulders">
+  <div class="track-head">
+    <div class="track-num">7</div>
+    <h2>Shoulders</h2>
+    <div class="equip">Dumbbells + Bench</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Overhead Press</div>
+      <div class="ex-reps">16<span>reps</span></div>
+    </div>
+    <div class="weight"><b>14–15kg</b> — scaled from your 5x5 (20kg)</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="30" r="7"/>
+          <line x1="60" y1="37" x2="60" y2="65"/>
+          <line x1="60" y1="45" x2="38" y2="55"/>
+          <circle cx="34" cy="58" r="6"/>
+          <line x1="60" y1="45" x2="82" y2="55"/>
+          <circle cx="86" cy="58" r="6"/>
+          <line x1="60" y1="65" x2="48" y2="85"/>
+          <line x1="60" y1="65" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Racked at shoulders</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="30" r="7"/>
+          <line x1="60" y1="37" x2="60" y2="65"/>
+          <line x1="60" y1="40" x2="35" y2="12"/>
+          <circle cx="30" cy="8" r="6"/>
+          <line x1="60" y1="40" x2="85" y2="12"/>
+          <circle cx="90" cy="8" r="6"/>
+          <line x1="60" y1="65" x2="48" y2="85"/>
+          <line x1="60" y1="65" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Pressed overhead</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Stand with feet hip-width, dumbbells at shoulder height, palms facing forward, core braced.</li>
+      <li>Press the weights straight up until arms are fully extended overhead, letting them travel slightly inward at the top.</li>
+      <li>Lower back to shoulder height with control.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Avoid arching your lower back — brace your core to keep ribs stacked over hips.</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Lateral Raises</div>
+      <div class="ex-reps">16<span>reps</span></div>
+    </div>
+    <div class="weight"><b>3–4kg</b> each dumbbell</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="20" r="7"/>
+          <line x1="60" y1="27" x2="60" y2="65"/>
+          <line x1="60" y1="38" x2="55" y2="60"/>
+          <circle cx="53" cy="63" r="6"/>
+          <line x1="60" y1="38" x2="65" y2="60"/>
+          <circle cx="67" cy="63" r="6"/>
+          <line x1="60" y1="65" x2="48" y2="85"/>
+          <line x1="60" y1="65" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Arms down</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="20" r="7"/>
+          <line x1="60" y1="27" x2="60" y2="65"/>
+          <line x1="60" y1="38" x2="20" y2="38"/>
+          <circle cx="14" cy="38" r="6"/>
+          <line x1="60" y1="38" x2="100" y2="38"/>
+          <circle cx="106" cy="38" r="6"/>
+          <line x1="60" y1="65" x2="48" y2="85"/>
+          <line x1="60" y1="65" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Arms level with shoulders</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Stand holding dumbbells by your sides, a slight bend in the elbows, palms facing your body.</li>
+      <li>Raise both arms out to the sides until they reach shoulder height, leading with the elbows.</li>
+      <li>Lower back down with control — don't let momentum carry the weight.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Imagine pouring water from a jug as you raise — slight tilt, don't shrug your traps up.</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Upright Row</div>
+      <div class="ex-reps">16<span>reps</span></div>
+    </div>
+    <div class="weight"><b>12–15kg</b> barbell (general estimate)</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="20" r="7"/>
+          <line x1="60" y1="27" x2="60" y2="65"/>
+          <line x1="60" y1="38" x2="45" y2="60"/>
+          <line x1="60" y1="38" x2="75" y2="60"/>
+          <line x1="30" y1="60" x2="90" y2="60"/>
+          <line x1="60" y1="65" x2="48" y2="85"/>
+          <line x1="60" y1="65" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Bar at hips</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <circle cx="60" cy="20" r="7"/>
+          <line x1="60" y1="27" x2="60" y2="65"/>
+          <line x1="60" y1="38" x2="42" y2="30"/>
+          <line x1="60" y1="38" x2="78" y2="30"/>
+          <line x1="35" y1="30" x2="85" y2="30"/>
+          <line x1="60" y1="65" x2="48" y2="85"/>
+          <line x1="60" y1="65" x2="72" y2="85"/>
+        </svg>
+        <div class="label">Bar to chin height</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Hold the barbell with an overhand grip, hands about shoulder-width apart, resting against your thighs.</li>
+      <li>Pull the bar straight up along your body, leading with your elbows, until it reaches roughly chin/collarbone height.</li>
+      <li>Lower back down with control.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Elbows stay higher than your wrists throughout the pull.</div>
+  </div>
+</section>
+
+<!-- CORE -->
+<section class="track" id="core">
+  <div class="track-head">
+    <div class="track-num">8</div>
+    <h2>Core</h2>
+    <div class="equip">Bench + Light Plate</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Plank</div>
+      <div class="ex-reps">45<span>sec</span></div>
+    </div>
+    <div class="weight">Bodyweight — no added load</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <line x1="10" y1="70" x2="110" y2="70"/>
+          <circle cx="18" cy="52" r="7"/>
+          <line x1="24" y1="57" x2="100" y2="66"/>
+          <line x1="35" y1="60" x2="25" y2="70"/>
+          <line x1="80" y1="63" x2="72" y2="70"/>
+        </svg>
+        <div class="label">Straight line</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="#c9524a" stroke-width="4" stroke-linecap="round">
+          <line x1="10" y1="70" x2="110" y2="70"/>
+          <circle cx="18" cy="55" r="7"/>
+          <path d="M24 60 Q50 78 100 66" stroke-dasharray="4 3"/>
+          <line x1="35" y1="65" x2="25" y2="70"/>
+          <line x1="80" y1="63" x2="72" y2="70"/>
+        </svg>
+        <div class="label">Avoid: hips sagging</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Forearms on the bench (or floor), elbows under shoulders, body extended in a straight line to your heels.</li>
+      <li>Brace your abs and squeeze your glutes to keep hips level — not piked up, not sagging down.</li>
+      <li>Breathe steadily and hold the position for the full time.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Tuck your chin slightly and look at the floor to keep your neck neutral.</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Russian Twists</div>
+      <div class="ex-reps">20<span>reps</span></div>
+    </div>
+    <div class="weight"><b>4–6kg</b> plate</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <path d="M20 78 Q60 55 100 78" />
+          <circle cx="60" cy="42" r="7"/>
+          <line x1="60" y1="49" x2="60" y2="62"/>
+          <line x1="60" y1="55" x2="30" y2="45"/>
+          <circle cx="26" cy="43" r="5"/>
+          <line x1="60" y1="55" x2="90" y2="65"/>
+        </svg>
+        <div class="label">Twist left</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <path d="M20 78 Q60 55 100 78" />
+          <circle cx="60" cy="42" r="7"/>
+          <line x1="60" y1="49" x2="60" y2="62"/>
+          <line x1="60" y1="55" x2="90" y2="45"/>
+          <circle cx="94" cy="43" r="5"/>
+          <line x1="60" y1="55" x2="30" y2="65"/>
+        </svg>
+        <div class="label">Twist right</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Sit on the floor or bench edge, knees bent, leaning back slightly to about a 45° torso angle, holding a light plate or dumbbell with both hands.</li>
+      <li>Feet can stay on the floor for an easier version, or lifted for more challenge.</li>
+      <li>Rotate your torso to bring the weight to one side, then rotate through to the other side — that's one rep pair.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Rotate from your ribs, not just your arms — the weight should track with your torso.</div>
+  </div>
+
+  <div class="ex">
+    <div class="ex-title-row">
+      <div class="ex-title">Bicycle Crunches</div>
+      <div class="ex-reps">20<span>reps</span></div>
+    </div>
+    <div class="weight">Bodyweight — no added load</div>
+    <div class="frames">
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <path d="M20 82 Q60 60 100 82" />
+          <circle cx="55" cy="48" r="7"/>
+          <line x1="55" y1="55" x2="42" y2="68"/>
+          <line x1="55" y1="55" x2="75" y2="62"/>
+          <line x1="42" y1="68" x2="35" y2="82"/>
+          <line x1="75" y1="62" x2="88" y2="45"/>
+          <line x1="88" y1="45" x2="90" y2="30"/>
+        </svg>
+        <div class="label">Right elbow to left knee</div>
+      </div>
+      <div class="frame">
+        <svg viewBox="0 0 120 90" fill="none" stroke="var(--accent)" stroke-width="4" stroke-linecap="round">
+          <path d="M20 82 Q60 60 100 82" />
+          <circle cx="65" cy="48" r="7"/>
+          <line x1="65" y1="55" x2="78" y2="68"/>
+          <line x1="65" y1="55" x2="45" y2="62"/>
+          <line x1="78" y1="68" x2="85" y2="82"/>
+          <line x1="45" y1="62" x2="32" y2="45"/>
+          <line x1="32" y1="45" x2="30" y2="30"/>
+        </svg>
+        <div class="label">Left elbow to right knee</div>
+      </div>
+    </div>
+    <ol class="steps">
+      <li>Lie on your back, hands lightly behind your head, knees bent to 90°, lower back pressed into the floor.</li>
+      <li>Bring one knee toward your chest while rotating to bring the opposite elbow toward it, extending the other leg out straight (not touching the floor).</li>
+      <li>Switch sides in a smooth pedaling motion, alternating elbow to opposite knee.</li>
+    </ol>
+    <div class="cue"><b>Cue:</b> Rotate from the ribs, and don't pull on your neck — hands just support the head's weight.</div>
+  </div>
+</section>
+
+<footer>
+  <b style="color:var(--ink)">Cool-Down (3–5 min):</b> Static stretching — quads, hamstrings, chest, lats, shoulders, triceps, biceps, hip flexors.<br><br>
+  Controlled tempo &middot; light-to-moderate load &middot; last 2–3 reps should be hard with good form.<br>
+  Total session time: ~45–50 min including warm-up and cool-down.
+</footer>
+
+</body>
+</html>
